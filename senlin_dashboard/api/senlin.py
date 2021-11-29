@@ -87,7 +87,7 @@ def senlinclient(request):
         token=request.user.token.id,
         project_id=request.user.tenant_id
     )
-    session = ks_session.Session(auth=auth)
+    session = ks_session.Session(auth=auth, verify='/etc/ssl/certs/ca-certificates.crt')
     return senlin_client.Client(session=session,
                                 region_name=request.user.services_region)
 
